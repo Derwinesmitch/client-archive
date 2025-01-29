@@ -38,6 +38,35 @@ export default function AddPage() {
                   />
                 </div>
               </div>
+              <div>
+                <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-900">
+                  Phone Number:
+                </label>
+                <div className="mt-2">
+                <input
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    type="tel"
+                    required
+                    className="block w-full rounded-md bg-white px-3 py-1.5 text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  />
+                </div>
+              </div>
+              <div>
+                <label htmlFor="fileUpload" className="block text-sm font-medium text-gray-900">
+                  Upload File:
+                </label>
+                <div className="mt-2">
+                  <input
+                    id="fileUpload"
+                    name="fileUpload"
+                    type="file"
+                    required
+                    className="block w-full rounded-md bg-white px-3 py-1.5 text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  />
+                </div>
+                 
+              </div>
             </form>
           </div>
         </div>
