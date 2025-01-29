@@ -1,4 +1,25 @@
+import { auth } from "../firebase/firebase"
+import { useState } from "react"
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
+
 export default function Login() {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    console.log("Email", email);
+    console.log("Password", password);
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      console.log("logged in", userCredential.user);
+    } catch (error) {
+      console.error("Login error:", error.message);
+    }
+   
+  };
+
     return (
       <>
 
@@ -15,7 +36,7 @@ export default function Login() {
           </div>
   
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form action="#" method="POST" className="space-y-6">
+            <form onSubmit={handleLogin} className="space-y-6">
               <div>
                 <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
                   Email address
@@ -27,6 +48,8 @@ export default function Login() {
                     type="email"
                     required
                     autoComplete="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   />
                 </div>
@@ -45,6 +68,8 @@ export default function Login() {
                     type="password"
                     required
                     autoComplete="current-password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   />
                 </div>
