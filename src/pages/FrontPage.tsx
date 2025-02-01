@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 export default function FrontPage() {
     const [query, setQuery] = useState("");
+    const navigate = useNavigate();
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
+        navigate(`/archive?query=${encodeURIComponent(query)}`);
         console.log("search:", query);
     };
 
