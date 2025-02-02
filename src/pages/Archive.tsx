@@ -30,7 +30,11 @@ export default function Archive() {
                     <thead>
                         <tr className="bg-indigo-600 text-white">
                             <th className="border border-gray-300 p-2">#</th>
-                            <th className="border border-gray-300 p-2">Title</th>
+                            <th className="border border-gray-300 p-2">Company Name</th>
+                            <th className="border border-gray-300 p-2">Email:</th>
+                            <th className="border border-gray-300 p-2">Url:</th>
+                            <th className="border border-gray-300 p-2">Telephone:</th>
+                            <th className="border border-gray-300 p-2">What is:</th>
                         </tr>
                     </thead>
                     <tbody>
