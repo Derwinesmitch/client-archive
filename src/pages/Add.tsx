@@ -1,4 +1,39 @@
+import { useState } from "react";
+import { db } from "../firebase/firebase"; 
+import { collection, addDoc } from "firebase/firestore";
+import { Navigate, useNavigate } from "react-router";
+
+
+
+
 export default function AddPage() {
+  const [email, setEmail] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [websiteUrl, setWebsiteUrl] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [whatIs, setWhatIs] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      await addDoc(collection(db, "entries"), {
+        email,
+        companyName,
+        websiteUrl,
+        phoneNumber,
+        whatIs,
+        createdAt: new Date(),
+      });
+
+      console.log("Entry added successfully!");
+      navigate("/archive");
+    } catch (error) {
+      console.error("Error adding entry:", error);
+    }
+  };
+  
     return (
       <>
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -8,7 +43,7 @@ export default function AddPage() {
             </h2>
           </div>
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-lg">
-            <form action="#" method="POST" className="space-y-6">
+            <form onSubmit={handleSubmit}className="space-y-6">
               <div>
                 <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
                   Email address
@@ -16,10 +51,12 @@ export default function AddPage() {
                 <div className="mt-2">
                   <input
                     id="email"
-                    name="email"
+                    
                     type="email"
                     required
                     autoComplete="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="block w-full rounded-md bg-white px-3 py-1.5 text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </div>
@@ -32,7 +69,8 @@ export default function AddPage() {
                 <input
                     id="companyName"
                     name="companyName"
-                    type="text"
+                    value={companyName}
+                    onChange={(e) => setCompanyName(e.target.value)}
                     required
                     className="block w-full rounded-md bg-white px-3 py-1.5 text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
@@ -43,9 +81,9 @@ export default function AddPage() {
                 <div className="mt-2">
                   <input 
                     id="websiteUrl"
-                    name="websiteUrl"
-                    type="url"
-                    required
+                    onChange={(e) => setWebsiteUrl(e.target.value)}
+                    value={websiteUrl}
+                    
                     placeholder="https://example.com"
                     className="block w-full rounded-md bg-white px-3 py-1.5 text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
@@ -58,9 +96,10 @@ export default function AddPage() {
                 <div className="mt-2">
                 <input
                     id="phoneNumber"
-                    name="phoneNumber"
                     type="tel"
                     required
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
                     className="block w-full rounded-md bg-white px-3 py-1.5 text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </div>
@@ -87,12 +126,18 @@ export default function AddPage() {
                 <div className="mt-2">
                   <input
                     id="whatIs"
-                    name="whatIs"
+                    value={whatIs}
+                    onChange={(e) => setWhatIs(e.target.value)}
                     type="text"
                     required
                     className="block w-full rounded-md bg-white px-3 py-1.5 text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </div>
+                <button
+                 type="submit"
+                 className="w-full bg-indigo-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-indigo-500">
+                  Add
+                </button>
               </div>
             </form>
           </div>
