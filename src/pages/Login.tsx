@@ -1,10 +1,13 @@
 import { auth } from "../firebase/firebase"
 import { useState } from "react"
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
+import { useNavigate } from "react-router"
 
 export default function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [error, setErrorMessage] = useState("")
+  const navigate = useNavigate();
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -14,6 +17,7 @@ export default function Login() {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       console.log("logged in", userCredential.user);
+      navigate("/frontpage")
     } catch (error) {
       console.error("Login error:", error.message);
     }
