@@ -10,7 +10,7 @@ export default function Archive() {
     
 
 
-    const [results, setResults] = useState<string[]>([]);
+    const [results, setResults] = useState<{ id: string; companyName: string; email: string; websiteUrl: string; phoneNumber: string; whatIs: string }[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -19,7 +19,7 @@ export default function Archive() {
             const data = querySnapshot.docs.map((doc) => ({
               id: doc.id,
               ...doc.data(),
-            }));
+            })) as { id: string; companyName: string; email: string; websiteUrl: string; phoneNumber: string; whatIs: string }[];
     
             if (searchQuery) {
               const filteredData = data.filter((entry) =>
