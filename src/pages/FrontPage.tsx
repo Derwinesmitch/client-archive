@@ -25,11 +25,11 @@ export default function FrontPage() {
                         placeholder="search:"
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
-                        className="w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                        className="w-full rounded-md border border-gray-300 bg-white px-4 py-1 sm:py-2 text-sm shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                     />
                     <button
                         type="submit"
-                        className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md bg-indigo-600 px-4 py-2 text-white shadow md hover:bg-indigo-500">
+                        className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md bg-indigo-600 px-3 sm:px-4 py-1 sm:py-2 text-white shadow md hover:bg-indigo-500">
                             🔍
                         </button>
                 </form>
