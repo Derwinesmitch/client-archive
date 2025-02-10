@@ -47,13 +47,13 @@ export default function Archive() {
       };
 
     return (
-                <div className="min-h-screen p-8 bg-gray-100">
+                <div className="min-h-screen p-8 bg-gray-50">
             <div className="flex justify-between items-center w-full max-w-4xl mx-auto mb-6">
-                <h1 className="text-2xl font-bold text-gray-900">Results for: {searchQuery}</h1>
+                <h1 className="text-2xl font-bold text-gray-800">Results for: {searchQuery}</h1>
                 <div className="flex space-x-4">                    
                     <button
                         onClick={() => navigate("/frontpage")}
-                        className="bg-indigo-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-indigo-500 transition"
+                        className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-400 transition"
                     >
                         🔙 Back to Search
                     </button>
@@ -72,7 +72,7 @@ export default function Archive() {
             ) : (
                 <div className="bg-white shadow-lg rounded-lg overflow-hidden">
                     <table className="w-full border-collapse">
-                        <thead className="bg-indigo-600 text-white text-left">
+                        <thead className="bg-blue-100 text-gray-800">
                             <tr>
                                 <th className="py-3 px-4">#</th>
                                 <th className="py-3 px-4">Company Name</th>
@@ -85,14 +85,28 @@ export default function Archive() {
                         </thead>
                         <tbody>
                             {results.map((item, index) => (
-                                <tr key={item.id} className="border-b hover:bg-gray-100">
+                                <tr key={item.id} className="border-b hover:bg-gray-50">
                                     <td className="py-3 px-4">{index + 1}</td>
                                     <td className="py-3 px-4 font-semibold">{item.companyName}</td>
                                     <td className="py-3 px-4">{item.email}</td>
                                     <td className="py-3 px-4 text-blue-600 underline">{item.websiteUrl}</td>
                                     <td className="py-3 px-4">{item.phoneNumber}</td>
                                     <td className="py-3 px-4">
-                                        <span className="bg-blue-100 text-blue-700 text-xs font-medium px-2.5 py-1 rounded-full">
+                                    <span
+                                            className={`text-xs font-medium px-2.5 py-1 rounded-full ${
+                                                item.whatIs === "Software Development"
+                                                    ? "bg-blue-200 text-blue-800"
+                                                    : item.whatIs === "Food & Catering"
+                                                    ? "bg-green-200 text-green-800"
+                                                    : item.whatIs === "Healthcare & Medical"
+                                                    ? "bg-red-200 text-red-800"
+                                                    : item.whatIs === "Digital Marketing"
+                                                    ? "bg-yellow-200 text-yellow-800"
+                                                    : item.whatIs === "Education & Learning"
+                                                    ? "bg-purple-200 text-purple-800"
+                                                    : "bg-gray-200 text-gray-800"
+                                            }`}
+                                        >
                                             {item.whatIs}
                                         </span>
                                     </td>
