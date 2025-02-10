@@ -47,60 +47,69 @@ export default function Archive() {
       };
 
     return (
-        <div className="min-h-screen p-8 bg-gray-100">
-            <div className="flex justify-between items-center w-full max-w-3xl mb-4">
-                <h1 className="text-3x1 font-bold text-gray-900 mb-6">Results for: {searchQuery}</h1>
-                <div className="flex space-x-4">
-                <button
-                    onClick={() => navigate("/addpage")}
-                    className="bg-green-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-green-500" 
+                <div className="min-h-screen p-8 bg-gray-100">
+            <div className="flex justify-between items-center w-full max-w-4xl mx-auto mb-6">
+                <h1 className="text-2xl font-bold text-gray-900">Results for: {searchQuery}</h1>
+                <div className="flex space-x-4">                    
+                    <button
+                        onClick={() => navigate("/frontpage")}
+                        className="bg-indigo-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-indigo-500 transition"
                     >
-                    Add new
-                </button>
-                <button
-                    onClick={() => navigate("/frontpage")}
-                    className="bg-indigo-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-indigo-500"
-                >🔙 Back to Search</button>
-                </div>
-            </div> 
+                        🔙 Back to Search
+                    </button>
+                    <button
+                        onClick={() => navigate("/addpage")}
+                        className="bg-green-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-green-500 transition"
+                    >
+                        Add new
+                    </button>
 
-                {results.length === 0 ? (
-                    <p className="text-gray-600 text-lg mt-6">No results</p>
-                ): (
-                        <table className="w-full border-collapse border border-gray-300 bg-white">
-                            <thead>
-                                <tr className="bg-indigo-600 text-white">
-                                    <th className="border border-gray-300 p-2">#</th>
-                                    <th className="border border-gray-300 p-2">Company Name</th>
-                                    <th className="border border-gray-300 p-2">Email:</th>
-                                    <th className="border border-gray-300 p-2">Url:</th>
-                                    <th className="border border-gray-300 p-2">Telephone:</th>
-                                    <th className="border border-gray-300 p-2">What is:</th>
+                </div>
+            </div>
+
+            {results.length === 0 ? (
+                <p className="text-gray-600 text-lg text-center">No results found.</p>
+            ) : (
+                <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+                    <table className="w-full border-collapse">
+                        <thead className="bg-indigo-600 text-white text-left">
+                            <tr>
+                                <th className="py-3 px-4">#</th>
+                                <th className="py-3 px-4">Company Name</th>
+                                <th className="py-3 px-4">Email</th>
+                                <th className="py-3 px-4">Website</th>
+                                <th className="py-3 px-4">Phone</th>
+                                <th className="py-3 px-4">Category</th>
+                                <th className="py-3 px-4">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {results.map((item, index) => (
+                                <tr key={item.id} className="border-b hover:bg-gray-100">
+                                    <td className="py-3 px-4">{index + 1}</td>
+                                    <td className="py-3 px-4 font-semibold">{item.companyName}</td>
+                                    <td className="py-3 px-4">{item.email}</td>
+                                    <td className="py-3 px-4 text-blue-600 underline">{item.websiteUrl}</td>
+                                    <td className="py-3 px-4">{item.phoneNumber}</td>
+                                    <td className="py-3 px-4">
+                                        <span className="bg-blue-100 text-blue-700 text-xs font-medium px-2.5 py-1 rounded-full">
+                                            {item.whatIs}
+                                        </span>
+                                    </td>
+                                    <td className="py-3 px-4">
+                                        <button
+                                            onClick={() => handleDelete(item.id)}
+                                            className="bg-red-600 text-white px-3 py-1 rounded-md shadow-md hover:bg-red-500 transition"
+                                        >
+                                            🗑 Delete
+                                        </button>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                {results.map((item, index)=>(
-                                    <tr key={index} className="border border-gray-300">
-                                        <th className="border border-gray-300 p-2">{index + +1}</th>
-                                        <th className="border border-gray-300 p-2">{item.companyName}</th>
-                                        <th className="border border-gray-300 p-2">{item.email}</th>
-                                        <td className="p-2">{item.websiteUrl}</td>
-                                        <td className="p-2">{item.phoneNumber}</td>
-                                        <td className="p-2">{item.whatIs}</td>    
-                                        <td className="p-2">
-                                            <button
-                                                onClick={() => handleDelete(item.id)}
-                                                className="bg-red-600 text-white px-3 py-1 rounded-md shadow-md hover:bg-red-500"
-                                            >
-                                                🗑️ Delete
-                                            </button>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>   
-                )}
-                 
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            )}
         </div>
     )
 
