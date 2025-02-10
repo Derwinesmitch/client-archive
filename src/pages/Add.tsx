@@ -38,8 +38,8 @@ export default function AddPage() {
       <>
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-lg">
-            <h2 className=" text-center text-2xl font-bold tracking-tight text-gray-900">
-              Add
+            <h2 className=" text-center bg-blue-100 text-2xl font-bold tracking-tight text-gray-900">
+              New Entry:
             </h2>
           </div>
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-lg">
@@ -135,7 +135,7 @@ export default function AddPage() {
                 </div>
                 <button
                  type="submit"
-                 className="w-full bg-indigo-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-indigo-500">
+                 className="w-full bg-blue-100 text-gray-800 px-4 py-2 rounded-md shadow-md hover:bg-blue-100">
                   Add
                 </button>
               </div>
