@@ -63,7 +63,7 @@ export default function Archive() {
                         onClick={() => navigate("/addpage")}
                         className="bg-green-600 text-white px-3 sm:px-4 py-2 rounded-md shadow-md hover:bg-green-500 transition text-sm sm:text-base"
                     >
-                        Add new
+                        Add new 
                     </button>
 
                 </div>
