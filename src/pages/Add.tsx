@@ -136,7 +136,7 @@ export default function AddPage() {
                 <button
                  type="submit"
                  className="w-full bg-blue-100 text-gray-800 px-4 py-2 rounded-md shadow-md hover:bg-blue-100">
-                  Add
+                  Add Entry
                 </button>
               </div>
             </form>
