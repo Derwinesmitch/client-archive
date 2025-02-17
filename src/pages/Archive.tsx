@@ -59,13 +59,13 @@ export default function Archive() {
                 onClick={() => navigate("/frontpage")}
                 className="bg-blue-500 text-white px-3 sm:px-4 py-2 rounded-md shadow-md hover:bg-blue-400 transition text-sm sm:text-base"
               >
-                🔙 Back to Search
+                Back to Search
               </button>
               <button
                 onClick={() => navigate("/addpage")}
                 className="bg-green-600 text-white px-3 sm:px-4 py-2 rounded-md shadow-md hover:bg-green-500 transition text-sm sm:text-base"
               >
-                Add new
+                Add New
               </button>
             </div>
           </div>
@@ -113,7 +113,7 @@ export default function Archive() {
                             {item.phoneNumber}
                           </td>
                           <td className="py-3 px-4">
-                            <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-gray-200 text-gray-900">
+                            <span className="text-xs whitespace-nowrap w-auto font-medium px-2.5 py-1 rounded-full bg-gray-200 text-gray-900">
                               {item.whatIs}
                             </span>
                           </td>
@@ -122,7 +122,7 @@ export default function Archive() {
                               onClick={() => handleDelete(item.id)}
                               className="bg-red-600 text-white px-2 sm:px-3 py-1 sm:py-1.5 rounded-md shadow-md hover:bg-red-500 transition text-xs sm:text-sm"
                             >
-                              🗑 Delete
+                              Delete
                             </button>
                           </td>
                         </tr>
