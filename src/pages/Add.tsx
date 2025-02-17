@@ -38,9 +38,17 @@ export default function AddPage() {
       <>
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-lg">
-            <h2 className=" text-center bg-blue-100 text-2xl font-bold tracking-tight text-gray-900">
-              New Entry:
-            </h2>
+            <div className="flex items-center justify-between bg-blue-100 p-2 rounded-md">
+              <h2 className=" text-2xl font-bold tracking-tight text-gray-900">
+                New Entry:
+              </h2>
+              <button
+                  onClick={() => navigate("/frontpage")}
+                  className="bg-blue-500 text-white px-2 py-1 rounded-md shadow-md hover:bg-blue-400 transition text-xs sm:text-sm"
+                >
+                  Back to Search
+                </button>
+            </div>
           </div>
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-lg">
             <form onSubmit={handleSubmit}className="space-y-6">
@@ -121,7 +129,7 @@ export default function AddPage() {
               </div> */}
               <div>
                 <label htmlFor="whatIs" className="block text-sm font-medium text-gray-900">
-                  What is:
+                  Category:
                 </label>
                 <div className="mt-2">
                   <input
