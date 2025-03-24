@@ -8,6 +8,8 @@ import { useNavigate } from "react-router";
 
 export default function AddPage() {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [websiteUrl, setWebsiteUrl] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -20,6 +22,8 @@ export default function AddPage() {
     try {
       await addDoc(collection(db, "entries"), {
         email,
+        name,
+        lastName,
         companyName,
         websiteUrl,
         phoneNumber,
@@ -83,7 +87,38 @@ export default function AddPage() {
               />
             </div>
           </div>
-
+          
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-900">
+              Name:
+            </label>
+            <div className="mt-2">
+              <input
+                id="name"
+                name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                className="block w-full rounded-md bg-white px-3 py-1.5 text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              />
+            </div>
+          </div>
+          
+          <div>
+            <label htmlFor="lastName" className="block text-sm font-medium text-gray-900">
+              LastName:
+            </label>
+            <div className="mt-2">
+              <input
+                id="lastName"
+                name="lastName"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                required
+                className="block w-full rounded-md bg-white px-3 py-1.5 text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              />
+            </div>
+          </div>
           <div>
             <label htmlFor="websiteUrl" className="block text-sm font-medium text-gray-900">
               Website URL:
