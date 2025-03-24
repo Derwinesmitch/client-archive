@@ -14,9 +14,6 @@ export default function FrontPage() {
     return (
 <div className="relative min-h-screen flex items-start justify-center px-6">
     <div className="absolute top-1/4 w-full max-w-xl text-center px-[12.5%] sm:px-0">
-        <img 
-            
-        alt="company logo" className="mx-auto mb-6 h-16 w-auto" />
         <form onSubmit={handleSearch} className="relative">
             <input
                 type="text"
